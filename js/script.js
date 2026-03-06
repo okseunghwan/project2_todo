@@ -58,7 +58,7 @@ function render(){
           <div>
             <button onclick="toggleComplete('${taskList[i].id}')">check</button>
             
-            <button onclick="deleteTask()">delete</button>
+            <button onclick="deleteTask('${taskList[i].id}')">delete</button>
           </div>
           </div>`
     }else{
@@ -67,7 +67,7 @@ function render(){
           <div>
             <button onclick="toggleComplete('${taskList[i].id}')">check</button>
             
-            <button onclick="deleteTask()">delete</button>
+            <button onclick="deleteTask('${taskList[i].id}')">delete</button>
           </div>
         </div>`;
         // 체크버튼이 생성되면 바로 클릭이벤트를 실행한다. 클릭하면 함수가 실행된다.
@@ -100,12 +100,15 @@ function toggleComplete(id){
 }
 
 function deleteTask(id){
-  console.log("삭제하자");
+  
   for(let i = 0; i<taskList.length;i++){
-    if(taskList[i].id ==id){
-      
+    if(taskList[i].id == id){
+      taskList.splice(i,1)
+      // i번째 아이템을 1개 삭제한다
+      break;
     }
   }
+  render();
 }
 
 
